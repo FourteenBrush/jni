@@ -1,0 +1,3 @@
+[submodule "dependencies/bindgen"]
+	path = dependencies/bindgen
+	url = https://github.com/terickson001/bind-odin-port.git

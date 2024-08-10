@@ -2,8 +2,10 @@
 /*.exe
 /*.pdb
 /*.o
-# TODO: add output name here
+jni
 # LLVM IR
 /*.ll
 # Taskfile checksums
 .task
+out/
+temp/

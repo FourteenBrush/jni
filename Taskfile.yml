@@ -2,18 +2,18 @@ version: "3"
 silent: true
 
 vars:
-  OUT_NAME: "TODO"
+  OUT_NAME: "jni"
   COLLECTIONS: >-
-  CHECK_FLAGS: "{{.COLLECTIONS}} -strict-style"
+    -collection:deps=dependencies
+  CHECK_FLAGS: "{{.COLLECTIONS}}" # -strict-style"
   FLAGS: "-out:{{.OUT_NAME}} {{.CHECK_FLAGS}}"
-  DEBUG_FLAGS: "-debug" # -use-separate-modules" TODO: is broken for now
+  DEBUG_FLAGS: "-debug -use-separate-modules"
 
 tasks:
   default:
     desc: "Builds the project in release mode"
     aliases: [build, release]
-    sources:
-      - src/**/*.odin
+    sources: [src/**/*.odin]
     generates:
       - "{{.OUT_NAME}}{{exeExt}}"
     cmds:
@@ -30,7 +30,6 @@ tasks:
     desc: "Checks the code for errors"
     cmds:
       - odin check src {{.CHECK_FLAGS}}
-      - odin check tests {{.CHECK_FLAGS}} -no-entry-point
   test:
     desc: "Executes all tests"
     cmds:
